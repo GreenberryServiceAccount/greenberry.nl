@@ -1,0 +1,105 @@
+.transition {
+  display: flex;
+}
+
+/* Mouse Selection */
+::selection {
+  background: var(--_theme---button-color);
+  color: var(--_theme---background-color);
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: var(--_theme---button-color);
+  color: var(--_theme---background-color);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+}
+
+.swiper-button-disabled {
+  opacity: 0.25;
+  transition: 0.5s ease-in-out;
+}
+
+ol {
+  list-style: none;
+  counter-reset: list-counter;
+  padding-left: 0; /* optional */
+}
+
+ol li {
+  counter-increment: list-counter;
+  position: relative;
+  padding-left: 2.5em;
+}
+
+ol li::before {
+  content: "0" counter(list-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--_theme---button-color);
+}
+
+/* hide the native cursor */
+body {
+  cursor: none !important;
+}
+
+/* basic cursor element */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 40px;
+  background: #000;
+  pointer-events: none;
+  transform: translate3d(-50%, -50%, 0) scale(1);
+  z-index: 9998;
+  will-change: transform, width, height, border-radius, background-color,
+    opacity;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* label inside the cursor */
+.custom-cursor .cursor-label {
+  position: relative;
+  white-space: nowrap;
+  font-size: clamp(
+    var(--_font-sizes---min--button),
+    calc(1rem + var(--_font-sizes---button)),
+    var(--_font-sizes---max--button)
+  );
+  color: #fff;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* — Tablet & below: restore native pointer, hide the .custom-cursor — */
+@media screen and (max-width: 991px) {
+  body {
+    cursor: auto !important;
+  }
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+#pauseVideo {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#pauseVideo.faded {
+  opacity: 0;
+  pointer-events: none; /* Optional: disables interaction when faded */
+}
