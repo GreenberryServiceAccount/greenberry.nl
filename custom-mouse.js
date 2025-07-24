@@ -103,6 +103,8 @@ if (window.matchMedia("(min-width: 992px)").matches) {
           const style = window.getComputedStyle(el);
           const targetBR = style.borderRadius;
 
+          console.log(targetBR)
+
           // if there is no radius, or it's zero on all corners, use a fallback:
           if (!targetBR || targetBR === "0px" || targetBR === "0px 0px 0px 0px") {
             targetBR = "40px";
