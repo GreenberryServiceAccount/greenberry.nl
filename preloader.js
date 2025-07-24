@@ -12,6 +12,21 @@ if (isSafari && preloader && firstVisit) {
   });
   document.body.classList.remove("loading");
   sessionStorage.setItem("preloaderShown", "true");
+
+  gsap.set(
+      [
+        ".page-transition-background",
+        ".page-transition-circle-entrance",
+        ".transition",
+      ],
+      { opacity: 0 }
+    );
+
+    gsap.delayedCall(3.25, () => {
+      if (typeof initScrollAnimations === "function") {
+        initScrollAnimations();
+      }
+    });
 } else {
   // your original logic
 
