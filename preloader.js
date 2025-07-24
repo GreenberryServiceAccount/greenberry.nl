@@ -1,11 +1,10 @@
 // detect Safari (not Chrome/Android)
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const preloader = document.querySelector(".preloader");
-
-console.log(isSafari, navigator.userAgent)
+const firstVisit = !sessionStorage.getItem("preloaderShown");
 
 // if Safari, just hide it and bail
-if (isSafari && preloader) {
+if (isSafari && preloader && firstVisit) {
   gsap.set(".preloader", {
     opacity: 0,
     visibility: "hidden",
@@ -14,7 +13,6 @@ if (isSafari && preloader) {
   document.body.classList.remove("loading");
 } else {
   // your original logic
-  const firstVisit = !sessionStorage.getItem("preloaderShown");
 
   if (firstVisit && preloader) {
     sessionStorage.setItem("preloaderShown", "true");
