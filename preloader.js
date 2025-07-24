@@ -11,6 +11,7 @@ if (isSafari && preloader && firstVisit) {
     pointerEvents: "none"
   });
   document.body.classList.remove("loading");
+  sessionStorage.setItem("preloaderShown", "true");
 } else {
   // your original logic
 
