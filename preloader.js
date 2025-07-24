@@ -2,6 +2,8 @@
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const preloader = document.querySelector(".preloader");
 
+console.log(isSafari, navigator.userAgent)
+
 // if Safari, just hide it and bail
 if (isSafari && preloader) {
   gsap.set(".preloader", {
