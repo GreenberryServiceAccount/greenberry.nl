@@ -34,28 +34,37 @@ if (window.matchMedia("(min-width: 992px)").matches) {
     });
 
     // — Reset back to the little dot —
-    function resetToDot() {
-      gsap.killTweensOf(cursor);
-      gsap.killTweensOf(label);
-      gsap.to(label, {
-        duration: 0.2,
-        opacity: 0,
-        onComplete: function () {
-          label.textContent = "";
-        },
-      });
-      gsap.to(cursor, {
-        duration: 0.3,
-        ease: "power2.out",
-        width: defaultSize,
-        height: defaultSize,
-        scale: 1,
-        borderRadius: "50%",
-        backgroundColor: defaultColor,
-        opacity: 1,
-        transformOrigin: "center center",
-      });
-    }
+function resetToDot() {
+  gsap.killTweensOf(cursor);
+  gsap.killTweensOf(label);
+
+  // fade out any label
+  gsap.to(label, {
+    duration: 0.2,
+    opacity: 0,
+    onComplete: () => label.textContent = ""
+  });
+
+  // build a timeline for the cursor
+  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+  // 1) morph corners into a perfect circle
+  tl.to(cursor, {
+    duration: 0.2,
+    borderRadius: "50%",
+    backgroundColor: defaultColor
+  });
+
+  // 2) shrink size down to the dot
+  tl.to(cursor, {
+    duration: 0.3,
+    width:  defaultSize,
+    height: defaultSize,
+    scale:  1,
+    opacity: 1,
+    transformOrigin: "center center"
+  }, "-=0.1");
+}
 
     // — Attach hover logic —
     var els = document.querySelectorAll(hoverSelectors.join(","));
