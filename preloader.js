@@ -1,7 +1,8 @@
 const firstVisit = !sessionStorage.getItem("preloaderShown");
 const preloader = document.querySelector(".preloader");
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && navigator.vendor === "Apple";
 
-if (firstVisit && preloader) {
+if (firstVisit && preloader && !isSafari) {
   sessionStorage.setItem("preloaderShown", "true");
 
   // 🔸 Fade out + cleanup
