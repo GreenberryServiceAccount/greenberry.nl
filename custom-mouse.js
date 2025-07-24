@@ -101,7 +101,7 @@ if (window.matchMedia("(min-width: 992px)").matches) {
           // → BUTTON morph
           const r = el.getBoundingClientRect();
           const style = window.getComputedStyle(el);
-          const targetBR = style.borderRadius;
+          let   targetBR = style.borderRadius; 
 
           console.log(targetBR)
 
