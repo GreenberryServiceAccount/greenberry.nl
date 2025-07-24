@@ -34,7 +34,7 @@ if (isSafari && preloader && firstVisit) {
     sessionStorage.setItem("preloaderShown", "true");
 
     // 🔸 Fade out + cleanup
-    gsap.delayedCall(3.25, () => {
+    gsap.delayedCall(4, () => {
       gsap.to(".preloader-background", {
         opacity: 0,
         duration: 0.6,
@@ -59,7 +59,7 @@ if (isSafari && preloader && firstVisit) {
     );
 
     // 🔸 Scrolltrigger iets eerder
-    gsap.delayedCall(3.25, () => {
+    gsap.delayedCall(4, () => {
       if (typeof initScrollAnimations === "function") {
         initScrollAnimations();
       }
