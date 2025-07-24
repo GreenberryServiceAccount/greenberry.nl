@@ -48,21 +48,21 @@ function resetToDot() {
   // build a timeline for the cursor
   const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-  // 1) morph corners into a perfect circle
-  tl.to(cursor, {
-    duration: 0.2,
-    borderRadius: "50%",
-    backgroundColor: defaultColor
-  });
-
   // 2) shrink size down to the dot
   tl.to(cursor, {
-    duration: 0.3,
+    duration: 0.2,
     width:  defaultSize,
     height: defaultSize,
     scale:  1,
     opacity: 1,
     transformOrigin: "center center"
+  });
+
+  // 1) morph corners into a perfect circle
+  tl.to(cursor, {
+    duration: 0.2,
+    borderRadius: "50%",
+    backgroundColor: defaultColor
   }, "-=0.1");
 }
 
