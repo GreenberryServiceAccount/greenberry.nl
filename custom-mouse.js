@@ -102,6 +102,12 @@ if (window.matchMedia("(min-width: 992px)").matches) {
           const r = el.getBoundingClientRect();
           const style = window.getComputedStyle(el);
           const targetBR = style.borderRadius;
+
+          // if there is no radius, or it's zero on all corners, use a fallback:
+          if (!targetBR || targetBR === "0px" || targetBR === "0px 0px 0px 0px") {
+            targetBR = "40px";
+          }
+
           gsap.to(cursor, {
             duration: 0.4,
             ease: "power2.out",
