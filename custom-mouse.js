@@ -42,28 +42,28 @@ function resetToDot() {
   gsap.to(label, {
     duration: 0.2,
     opacity: 0,
-    onComplete: () => label.textContent = ""
+    onComplete: () => (label.textContent = ""),
   });
 
   // build a timeline for the cursor
   const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-  // 2) shrink size down to the dot
+  // 1) shrink size down to the dot, and reset color
   tl.to(cursor, {
-    duration: 0.2,
-    width:  defaultSize,
+    duration: 0.3,
+    width: defaultSize,
     height: defaultSize,
-    scale:  1,
+    scale: 1,
+    backgroundColor: defaultColor,
     opacity: 1,
-    transformOrigin: "center center"
+    transformOrigin: "center center",
   });
 
-  // 1) morph corners into a perfect circle
+  // 2) only once the shrink is fully done, round into a perfect circle
   tl.to(cursor, {
     duration: 0.2,
     borderRadius: "50%",
-    backgroundColor: defaultColor
-  }, "-=0.1");
+  });
 }
 
     // — Attach hover logic —
