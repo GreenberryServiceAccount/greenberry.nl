@@ -22,7 +22,7 @@ if (isSafari && preloader && firstVisit) {
       { opacity: 0 }
     );
 
-    gsap.delayedCall(3.25, () => {
+    gsap.delayedCall(4, () => {
       if (typeof initScrollAnimations === "function") {
         initScrollAnimations();
       }
