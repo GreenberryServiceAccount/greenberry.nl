@@ -1,5 +1,10 @@
 const firstVisit = !sessionStorage.getItem("preloaderShown");
 const preloader = document.querySelector(".preloader");
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+if (isSafari) {
+  sessionStorage.setItem("preloaderShown", "true");
+}
 
 if (firstVisit && preloader) {
   sessionStorage.setItem("preloaderShown", "true");
